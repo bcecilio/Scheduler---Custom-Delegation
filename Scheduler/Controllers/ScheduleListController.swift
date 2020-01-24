@@ -15,7 +15,7 @@ class ScheduleListController: UIViewController {
     // data - an array of events
     private var events = [Event]()
     
-    public let dataPersistence = DataPersistence<Event>(filename: "schedules.plist")
+    public var dataPersistence = DataPersistence<Event>(filename: "schedules.plist")
     
     private var isEditingTableView = false {
         didSet { // property observer
@@ -156,6 +156,10 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.row]
         showCreateEventVC(event)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Completed"
     }
     
     // MARK:- reordering rows in a table view
