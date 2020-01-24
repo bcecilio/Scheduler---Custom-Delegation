@@ -34,6 +34,14 @@ class CreateEventController: UIViewController {
         
     updateUI()
   }
+    
+    override func viewWillAppear(_ animated: Bool) { // everytime the VC is on screen
+        super.viewWillAppear(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) { // every time you exot the VC
+        super.viewWillDisappear(true)
+    }
    
   private func updateUI() {
     if let event = event { // coming from didSelectRowAt (existing event)
